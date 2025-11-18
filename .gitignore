@@ -13,6 +13,7 @@ obj/
 *.sdf
 *.vshost.exe
 *.vshost.exe.config
+.vscode/
 
 # Rider files
 .idea/
