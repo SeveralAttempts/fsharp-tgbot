@@ -1,0 +1,37 @@
+# Build artifacts
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.log
+*.pdb
+*.opendata
+*.VC.db
+*.sdf
+*.vshost.exe
+*.vshost.exe.config
+
+# Rider files
+.idea/
+
+# Package manager files
+packages/
+node_modules/
+
+# FAKE (F# Make) build system files
+.fake/
+
+# Test results
+TestResults/
+
+# User-specific files
+*.userprefs
+
+# F# Interactive history
+.fsi-history
+
+# Local settings
+appsettings.Development.json
