@@ -1,5 +1,2 @@
-﻿open System
+﻿open Syste
 
-[<EntryPoint>]
-let main argv =
-    0
