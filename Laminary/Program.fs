@@ -1,2 +1,2 @@
-﻿open Syste
+﻿open System
 
