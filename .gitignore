@@ -36,3 +36,4 @@ TestResults/
 
 # Local settings
 appsettings.Development.json
+appsettings.json
