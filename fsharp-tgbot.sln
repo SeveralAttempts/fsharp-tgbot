@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Laminary", "Laminary\Laminary.fsproj", "{B62F014A-66BA-4DDA-9E85-A482FBAFF849}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Laminary.Domain", "Laminary.Domain\Laminary.Domain.fsproj", "{7066A1E5-B987-46B9-A87A-31DC76C04B17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B62F014A-66BA-4DDA-9E85-A482FBAFF849}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B62F014A-66BA-4DDA-9E85-A482FBAFF849}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B62F014A-66BA-4DDA-9E85-A482FBAFF849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7066A1E5-B987-46B9-A87A-31DC76C04B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7066A1E5-B987-46B9-A87A-31DC76C04B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7066A1E5-B987-46B9-A87A-31DC76C04B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7066A1E5-B987-46B9-A87A-31DC76C04B17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
