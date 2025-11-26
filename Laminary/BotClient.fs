@@ -41,9 +41,9 @@ let OnMsgReceived (client: ITelegramBotClient) (token: Threading.CancellationTok
 
         let messageToSend =
             match command with
-                | AvailableCommands.HelpCommand -> HelpCommandExecute
-                | AvailableCommands.GenerateUuidCommand -> GenerateUuidCommandExecute()
-                | AvailableCommands.UnknownCommand -> HandleUnknownCommand
+                | HelpCommand -> HelpCommandExecute
+                | GenerateUuidCommand -> GenerateUuidCommandExecute()
+                | UnknownCommand -> HandleUnknownCommand
 
         let! _ = client.SendMessage(message.Chat, messageToSend, cancellationToken = token) |> Async.AwaitTask
         ()
