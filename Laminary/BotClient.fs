@@ -5,6 +5,24 @@ open Telegram.Bot
 open Telegram.Bot.Types
 open Telegram.Bot.Types.Enums
 
+type AvailableCommands = 
+    | HelpCommand
+    | GenerateUuidCommand
+    | UnknownCommand
+
+let HelpCommandExecute = 
+    let message = "This bot generate uuids.\nCommands:\n
+    1./help - get this message with bot and commands descriptions.\n
+    2./generate - generate new uuid.\n"
+    message
+
+let GenerateUuidCommandExecute() =
+    Guid.NewGuid().ToString()
+
+let HandleUnknownCommand =
+    let message = "No such command provided by the bot."
+    message
+
 let InitializeBot(token: string) =
     if String.IsNullOrEmpty token then
         failwith "Bot token is null or empty!"
@@ -14,8 +32,20 @@ let InitializeBot(token: string) =
 let OnMsgReceived (client: ITelegramBotClient) (token: Threading.CancellationToken) (message: Message) (updateType: UpdateType) =
     async {
         if message.Text = null then return ()
-        let! _ = Async.Sleep(1000) |> Async.StartChild
-        let! _ = client.SendMessage(message.Chat, $"You said: {message.Text}", cancellationToken = token) |> Async.AwaitTask
+
+        let command = 
+            match message.Text.Trim().ToLower() with 
+                | "/help" -> HelpCommand
+                | "/generate" -> GenerateUuidCommand
+                | _ -> UnknownCommand
+
+        let messageToSend =
+            match command with
+                | AvailableCommands.HelpCommand -> HelpCommandExecute
+                | AvailableCommands.GenerateUuidCommand -> GenerateUuidCommandExecute()
+                | AvailableCommands.UnknownCommand -> HandleUnknownCommand
+
+        let! _ = client.SendMessage(message.Chat, messageToSend, cancellationToken = token) |> Async.AwaitTask
         ()
     } |> Async.StartAsTask :> Threading.Tasks.Task
 
