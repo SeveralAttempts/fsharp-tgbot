@@ -1,5 +1,5 @@
 namespace Laminary.Domain.Helpers
 
-module Error = 
-    type Error =
+module DomainError = 
+    type DomainError =
         | Validation
