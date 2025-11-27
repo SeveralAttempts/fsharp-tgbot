@@ -4,13 +4,12 @@ open System
 open Laminary.Domain.Helpers.DomainError
 
 module UserEntity =
-    type User = 
-        private { 
-            Id: Guid
-            Name: string
-            RegistrationDate: DateTime
-            Password: string
-        }
+    type User = private {
+        Id: Guid
+        Name: string
+        RegistrationDate: DateTime
+        Password: string
+    }
 
     let CreateUser(id: Guid, name: string, registrationDate: DateTime, password: string): Result<User, DomainError> =
         let isIdEmpty = id = Guid.Empty

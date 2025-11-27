@@ -26,4 +26,8 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Laminary.Domain\Laminary.Domain.fsproj" />
+  </ItemGroup>
+
 </Project>
