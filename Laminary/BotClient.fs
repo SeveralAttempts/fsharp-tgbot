@@ -4,20 +4,15 @@ open System
 open Telegram.Bot
 open Telegram.Bot.Types
 open Telegram.Bot.Types.Enums
-
-type AvailableCommands = 
-    | HelpCommand
-    | GenerateUuidCommand
-    | UnknownCommand
+open Laminary.Enums.CommandsEnum
 
 let HelpCommandExecute = 
     let message = "This bot generate uuids.\nCommands:\n
     1./help - get this message with bot and commands descriptions.\n
-    2./generate - generate new uuid.\n"
+    2./register - register new account.\n
+    3./myinfo - check if you have current login session.\n
+    4./login - login in new account"
     message
-
-let GenerateUuidCommandExecute() =
-    Guid.NewGuid().ToString()
 
 let HandleUnknownCommand =
     let message = "No such command provided by the bot."
@@ -36,13 +31,11 @@ let OnMsgReceived (client: ITelegramBotClient) (token: Threading.CancellationTok
         let command = 
             match message.Text.Trim().ToLower() with 
                 | "/help" -> HelpCommand
-                | "/generate" -> GenerateUuidCommand
                 | _ -> UnknownCommand
 
         let messageToSend =
             match command with
                 | HelpCommand -> HelpCommandExecute
-                | GenerateUuidCommand -> GenerateUuidCommandExecute()
                 | UnknownCommand -> HandleUnknownCommand
 
         let! _ = client.SendMessage(message.Chat, messageToSend, cancellationToken = token) |> Async.AwaitTask
