@@ -1,6 +1,6 @@
-namespace Laminary.Enums
+namespace Laminary.AssociatedData
 
-module CommandsEnum =
+module Commands =
     type AvailableCommands = 
         | HelpCommand
         | LoginCommand
@@ -8,8 +8,10 @@ module CommandsEnum =
         | CheckLoginInfo
         | UnknownCommand
 
-    // let parseAvailableCommands =
-    //     | "/help" -> HelpCommand
-    //     | "/login" -> LoginCommand
-    //     | "/register" -> RegisterCommand
-    //     | "checklogin" -> CheckLoginInfo
+    let parseAvailableCommands message =
+        match message with
+            | "/help" -> HelpCommand
+            | "/login" -> LoginCommand
+            | "/register" -> RegisterCommand
+            | "/checkLogin" -> CheckLoginInfo
+            | _ -> UnknownCommand

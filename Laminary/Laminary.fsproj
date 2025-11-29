@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,8 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="AssociatedData\Commands.fs" />
-    <Compile Include="BotClient.fs" />
+    <Compile Include="AssociatedData/Commands.fs" />
+    <Compile Include="AssociatedData/States.fs" />
+    <Compile Include="BotLogic/BotClient.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
