@@ -7,6 +7,8 @@ open Telegram.Bot.Types.Enums
 open Laminary.AssociatedData.Commands
 open Laminary.AssociatedData.States
 
+let state = State()
+
 let HelpCommandExecute = 
     "This bot generate uuids.\nCommands:\n
     1./help - get this message with bot and commands descriptions.\n
@@ -17,14 +19,24 @@ let HelpCommandExecute =
 let HandleUnknownCommand =
     "No such command provided by the bot."
 
-// let RegisterCommandExecute =
-//     State.Current = Idle
-//     ""
+let RegisterCommandExecute =
+    if state.GetRegisterState = RegisterState.NotProcessing then
+        state.SetRegisterState SetName
+        "Please, enter your name to register:"
+    else if state.GetRegisterState = SetName then
+        state.SetRegisterState SetPassword
+        "Name received. Please, enter your password to register:"
+    else if state.GetRegisterState = SetPassword then
+        state.SetRegisterState EndRegister
+        "Registration completed successfully!"
+    else
+        state.SetRegisterState RegisterState.NotProcessing
+        "Registration process cancelled."
 
 let InitializeBot(token: string) =
     if String.IsNullOrEmpty token then
         failwith "Bot token is null or empty!"
-    let botClient = TelegramBotClient(token)
+    let botClient = TelegramBotClient token
     botClient
 
 let OnMsgReceived (client: ITelegramBotClient) (token: Threading.CancellationToken) (message: Message) (updateType: UpdateType) =
@@ -36,7 +48,7 @@ let OnMsgReceived (client: ITelegramBotClient) (token: Threading.CancellationTok
         let messageToSend =
             match command with
                 | HelpCommand -> HelpCommandExecute
-                // | RegisterCommand -> RegisterCommandExecute
+                | RegisterCommand -> RegisterCommandExecute
                 | UnknownCommand -> HandleUnknownCommand
 
         let! _ = client.SendMessage(message.Chat, messageToSend, cancellationToken = token) |> Async.AwaitTask
