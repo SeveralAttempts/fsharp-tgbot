@@ -8,7 +8,7 @@ module Commands =
         | CheckLoginInfo
         | UnknownCommand
 
-    let parseAvailableCommands message =
+    let ParseAvailableCommands message =
         match message with
             | "/help" -> HelpCommand
             | "/login" -> LoginCommand
