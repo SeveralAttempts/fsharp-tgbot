@@ -70,13 +70,19 @@ let OnMsgReceived (client: ITelegramBotClient) (token: Threading.CancellationTok
         if message.Text = null then return ()
 
         let command = ParseAvailableCommands(message.Text.Trim().ToLower())        
-
-        // TODO: register and login command processing management
-
         let messageToSend = ParseCommandsToAction command
 
-        let! _ = client.SendMessage(message.Chat, messageToSend, cancellationToken = token) |> Async.AwaitTask
-        ()
+        if state.IsLoginProcessing && message.Text.StartsWith('/') <> true then
+            let loginMessage = LoginCommandExecute()
+            let! _ = client.SendMessage(message.Chat, loginMessage, cancellationToken = token) |> Async.AwaitTask
+            ()
+        elif state.IsRegisterProcessing && message.Text.StartsWith('/') <> true then
+            let registerMessage = RegisterCommandExecute()
+            let! _ = client.SendMessage(message.Chat, registerMessage, cancellationToken = token) |> Async.AwaitTask
+            ()
+        else
+            let! _ = client.SendMessage(message.Chat, messageToSend, cancellationToken = token) |> Async.AwaitTask
+            ()
     } |> Async.StartAsTask :> Threading.Tasks.Task
 
 let StartBot: Async<unit> = 
