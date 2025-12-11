@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Laminary", "Laminary\Lamina
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Laminary.Domain", "Laminary.Domain\Laminary.Domain.fsproj", "{7066A1E5-B987-46B9-A87A-31DC76C04B17}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Laminary.Infrasctructure.Dapper", "Laminary.Infrasctructure.Dapper\Laminary.Infrasctructure.Dapper.fsproj", "{8A0EB042-E201-4B7B-9050-B7454D9C8B17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{7066A1E5-B987-46B9-A87A-31DC76C04B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7066A1E5-B987-46B9-A87A-31DC76C04B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7066A1E5-B987-46B9-A87A-31DC76C04B17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A0EB042-E201-4B7B-9050-B7454D9C8B17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A0EB042-E201-4B7B-9050-B7454D9C8B17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A0EB042-E201-4B7B-9050-B7454D9C8B17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A0EB042-E201-4B7B-9050-B7454D9C8B17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
