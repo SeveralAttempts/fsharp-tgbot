@@ -9,4 +9,9 @@
     <Compile Include="Initialization.fs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper.FSharp" Version="4.9.0" />
+    <PackageReference Include="dbup-postgresql" Version="6.1.5" />
+  </ItemGroup>
+
 </Project>
